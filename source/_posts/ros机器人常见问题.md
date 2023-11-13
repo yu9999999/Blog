@@ -2,9 +2,9 @@
 title: ros2机器人常见问题以及一些使用方法
 date: 2023-10-19
 tags:
-- ros
+- ROS
 categories:
-- ros
+- ROS与机器人相关问题
 aside: false
 ---
 
@@ -50,7 +50,7 @@ $ rosdepc install -r --from-paths src --ignore-src --rosdistro $ROS_DISTRO -y
 ## 2. 切换teb算法
 
 首先下载源码：可以下载压缩文件，也可以git。teb有的需要costmap_converter文件，所以都下载
-然后安装依赖：rosdep install -i --from-path src --rosdistro galactic（用什么版本就换什么，比如foxy） -y
+然后安装依赖：`rosdep install -i --from-path src --rosdistro galactic -y`（用什么版本就换什么，比如这里用galactic）
 最后修改yaml文件替换dwb插件，编译，测试
 
 ## 3. ros2自定义msg
@@ -83,8 +83,8 @@ rqt->plugins->topic->message publisher->选择所需话题和消息类型->右�
 ## 6. 搭建ros仿真环境
 
 （1）gazebo->Edit->Building Editor->绘制好墙->保存->退出->添加物品->保存至world文件夹
-（2）修改gazebo的launch文件中的新建图world名字->启动gazebo的launch->启动cartographer的launch，->启动遥控ros2 run teleop_twist_keyboard teleop_twist_keyboard ->走完先暂停再地图后保存地图
-（3）保存地图前安装sudo apt install ros-humble-nav2-map-server->再保存地图:
+（2）修改gazebo的launch文件中的新建图world名字->启动gazebo的launch->启动cartographer的launch，->启动遥控`ros2 run teleop_twist_keyboard teleop_twist_keyboard` ->走完先暂停再地图后保存地图
+（3）保存地图前安装`sudo apt install ros-humble-nav2-map-server`->再保存地图:
 ``` bash
 $ cd src/cartographer目录/ && mkdir map && cd map（如果有这个目录直接进入该目录，然后运行下面的程序）
 $ ros2 run nav2_map_server map_saver_cli -t map -f 文件名
