@@ -89,3 +89,10 @@ rqt->plugins->topic->message publisher->选择所需话题和消息类型->右�
 $ cd src/cartographer目录/ && mkdir map && cd map（如果有这个目录直接进入该目录，然后运行下面的程序）
 $ ros2 run nav2_map_server map_saver_cli -t map -f 文件名
 ```
+
+## 7. 写一个定时器，通过计算时间戳去计算时间间隔
+``` bash
+rclcpp::Clock steady_clock_{RCL_STEADY_TIME};
+start_time_= steady_clock_.now();   //当前时间戳
+time = steady_clock_.now().seconds() - start_time_.seconds();    //当前时间与start_time_之间的时间间隔
+```
